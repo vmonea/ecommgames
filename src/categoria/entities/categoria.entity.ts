@@ -1,9 +1,9 @@
 import { IsNotEmpty } from "class-validator";
-import { Games } from "src/games/entities/games.entity";
+import { Games } from "src/produto/entities/produto.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name: "tb_categorias"})
-export class Categorias {
+export class Categoria {
 
     @PrimaryGeneratedColumn()    
     id: number
@@ -12,7 +12,8 @@ export class Categorias {
     @Column({length: 255, nullable: false})
     descricao: string
     
-    @OneToMany(()=> Games, (games) => games.tema)
-    postagem: Games[]
+    @OneToMany(()=> Games, (games) => games.categoria)
+    categoria: Games[]
+    games: any;
 
 }   

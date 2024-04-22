@@ -1,31 +1,31 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { DeleteResult, ILike, Repository } from "typeorm";
-import { Categorias } from "../categoria.entity";
+import { Categoria } from "../categoria.entity";
 
 @Injectable()
 export class CategoriaService {
     constructor(
-        @InjectRepository(Categorias)
-        private CategoriasRepository: Repository<Categorias>
+        @InjectRepository(Categoria)
+        private CategoriasRepository: Repository<Categoria>
     ) { }
 
-    async findAll(): Promise<Categorias[]> {
+    async findAll(): Promise<Categoria[]> {
         return await this.CategoriasRepository.find({
             relations: {
-                postagem: true
+                games: true
             }
         });
     }
 
-    async findById(id: number): Promise<Categorias> {
+    async findById(id: number): Promise<Categoria> {
 
         let Categorias = await this.CategoriasRepository.findOne({
             where: {
                 id
             },
             relations: {
-                postagem: true
+                games: true
             }
         });
 
@@ -35,22 +35,22 @@ export class CategoriaService {
         return Categorias;
     }
 
-    async findByDescricao(descricao: string): Promise<Categorias[]> {
+    async findByDescricao(descricao: string): Promise<Categoria[]> {
         return await this.CategoriasRepository.find({
             where: {
                 descricao: ILike(`%${descricao}%`)
             },
             relations: {
-                postagem: true
+                games: true
             }
         })
     }
 
-    async create(Categorias: Categorias): Promise<Categorias> {
+    async create(Categorias: Categoria): Promise<Categoria> {
         return await this.CategoriasRepository.save(Categorias);
     }
 
-    async update(Categorias: Categorias): Promise<Categorias> {
+    async update(Categorias: Categoria): Promise<Categoria> {
 
         let buscaCategorias = await this.findById(Categorias.id);
 

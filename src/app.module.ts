@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { Games } from './games/entities/games.entity';
-import { GamesModule } from './games/games.module';
-import { Categorias } from './categorias/entities/categoria.entity';
+import { Games } from './produto/entities/produto.entity';
+import { GamesModule } from './produto/produto.module';
+import { Categoria } from './categoria/entities/categoria.entity';
 
 
 @Module({
@@ -16,7 +16,7 @@ import { Categorias } from './categorias/entities/categoria.entity';
       username: 'root',
       password: 'root',
       database: 'db_ecommgames',
-      entities: [Games, Categorias],
+      entities: [Games, Categoria],
       synchronize: true,
       logging: true,
     }),

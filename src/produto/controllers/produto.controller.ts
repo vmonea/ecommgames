@@ -1,6 +1,6 @@
 import { Controller, Get, HttpCode, HttpStatus } from "@nestjs/common";
-import { Games } from "../entities/games.entity";
-import { GamesService } from "../entities/services/games.service";
+import { Games } from "../entities/produto.entity";
+import { GamesService } from "../entities/services/produto.service";
 
 
 @Controller("/games")
