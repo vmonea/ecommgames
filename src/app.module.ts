@@ -3,8 +3,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Games } from './produto/entities/produto.entity';
-import { GamesModule } from './produto/produto.module';
+import { ProdutoModule } from './produto/produto.module';
 import { Categoria } from './categoria/entities/categoria.entity';
+import { CategoriaModule } from './categoria/categoria.module';
+import { AuthModule } from './auth/auth.module';
+import { Usuario } from './usuario/entities/usuario.service';
+import { UsuarioModule } from './usuario/usuario.module';
 
 
 @Module({
@@ -16,10 +20,14 @@ import { Categoria } from './categoria/entities/categoria.entity';
       username: 'root',
       password: 'root',
       database: 'db_ecommgames',
-      entities: [Games, Categoria],
+      entities: [Games, Categoria, Usuario],
       synchronize: true,
       logging: true,
     }),
+    ProdutoModule,
+    CategoriaModule,
+    AuthModule,
+    UsuarioModule
 
   ],
   controllers: [AppController],

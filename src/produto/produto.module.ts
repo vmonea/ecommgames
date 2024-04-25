@@ -11,4 +11,4 @@ import { GamesController } from "./controllers/produto.controller";
     exports: [TypeOrmModule]
 })
 
-export class GamesModule{ }
+export class ProdutoModule{ }
